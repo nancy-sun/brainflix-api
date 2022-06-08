@@ -1,8 +1,9 @@
 const fs = require("fs");
 const express = require("express");
 const router = express.Router();
+const VIDEO_PATH = "./data/videos.json";
 
-function readVideoList(file, callback) {
+function readFile(file, callback) {
     fs.readFile(file, "utf-8", (err, data) => {
         console.log(data);
         if (err) {
@@ -16,13 +17,17 @@ function readVideoList(file, callback) {
 
 router.route("/")
     .get((req, res) => {
-        readVideoList("./data/videos.json", (data) => {
+        readFile(VIDEO_PATH, (data) => {
             //send only partial of array of obj data
-            // for (let i of data) {
-            //     let list = 
-            //     res.send(list);
-            // }
-            res.send(data);
+            const vidList = JSON.parse(data).map((video) => {
+                return {
+                    id: video.id,
+                    title: video.title,
+                    channel: video.channel,
+                    image: video.image
+                }
+            })
+            res.send(vidList);
         })
     })
 //     .post((req, res) => {
@@ -35,10 +40,3 @@ router.route("/")
 
 
 module.exports = router;
-
-// fs.readFile("./data/videos.json", "utf-8", (err, fileData) => {
-//     if (err) {
-//         console.log(err);
-//     }
-//     console.log(fileData);
-// })

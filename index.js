@@ -1,6 +1,7 @@
 const express = require("express");
+require('dotenv').config();
+const { PORT } = process.env;
 const app = express();
-const PORT = 8080;
 const videos = require("./routes/videos");
 app.use("/videos", videos);
 
@@ -9,5 +10,5 @@ app.use(express.json());
 
 
 app.listen(PORT, () => {
-    console.log("i'm listening");
+    console.log(`i'm listening at ${PORT}`);
 })
