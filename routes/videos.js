@@ -3,6 +3,7 @@ const express = require("express");
 const router = express.Router();
 const VIDEO_PATH = "./data/videos.json";
 const uniqid = require("uniqid");
+const { json } = require("express/lib/response");
 
 
 function readFile(file, callback) {
@@ -58,38 +59,57 @@ router.route("/")
     })
 
 //find single video
-router.route("/:id")
-    .get((req, res) => {
-        readFile(VIDEO_PATH, (data) => {
-            const videoDetails = JSON.parse(data);
-            const vidFound = videoDetails.find((video) => video.id == req.params.id);
-            if (vidFound) {
-                res.json(vidFound);
-            } else {
-                res.status(404).send("video not found");
-            }
-        })
+router.get("/:id", (req, res) => {
+    readFile(VIDEO_PATH, (data) => {
+        const videoDetails = JSON.parse(data);
+        const vidFound = videoDetails.find((video) => video.id == req.params.id);
+        if (vidFound) {
+            res.json(vidFound);
+        } else {
+            res.status(404).send("video not found");
+        }
     })
-    //post comment to that video id
-    .post((req, res) => {
-        const { comment } = req.body;
-        readFile(VIDEO_PATH, (data) => {
-            const videoDetails = JSON.parse(data);
-            const vidFound = videoDetails.find((video) => video.id == req.params.id);
-            if (vidFound) {
-                vidFound.comments.push({
-                    id: uniqid(),
-                    name: "anonymous",
-                    comment,
-                    likes: 0,
-                    timestamp: Date.now()
-                })
-                writeFile(VIDEO_PATH, videoDetails, (err) => console.log(err));
-                res.json(vidFound);
-            } else {
-                res.status(404).send("video not found");
-            }
-        })
+})
+//post comment to that video id - wip, need to post single comment instead of everything
+router.post("/:id/comments", (req, res) => {
+    const { comment } = req.body;
+    readFile(VIDEO_PATH, (data) => {
+        const videoDetails = JSON.parse(data);
+        const vidFound = videoDetails.find((video) => video.id == req.params.id);
+        const newComment = {
+            id: uniqid(),
+            name: "anonymous",
+            comment,
+            likes: 0,
+            timestamp: Date.now()
+        };
+        if (vidFound) {
+            vidFound.comments.push(newComment);
+            fs.writeFile(VIDEO_PATH, JSON.stringify(videoDetails), (err) => { err ? console.log(err) : console.log("file written") });
+            res.json(newComment);
+        } else {
+            res.status(404).send("video not found");
+        }
     })
+})
+//delete comment by comment id
+router.delete("/:id/comments/:commentId", (req, res) => {
+    readFile(VIDEO_PATH, (data) => {
+        const videos = JSON.parse(data);
+        const vidFound = videos.find((video) => video.id == req.params.id);
+        const comments = vidFound.comments;
+        if (vidFound) {
+            const commentFound = comments.find((comment) => comment.id == req.params.commentId);
+            if (commentFound) {
+                const commentIndex = comments.indexOf(commentFound);
+                comments.splice(commentIndex, 1);
+                fs.writeFile(VIDEO_PATH, JSON.stringify(videos), (err) => { err ? console.log(err) : console.log("file written") });
+                res.json(vidFound)
+            }
+        } else {
+            res.status(404).send("video not found");
+        }
+    })
+})
 
 module.exports = router;
