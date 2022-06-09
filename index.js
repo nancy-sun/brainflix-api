@@ -3,10 +3,10 @@ require('dotenv').config();
 const { PORT } = process.env;
 const app = express();
 const videos = require("./routes/videos");
-app.use("/videos", videos);
 
 app.use(express.static("public"));
 app.use(express.json());
+app.use("/videos", videos);
 
 
 app.listen(PORT, () => {
