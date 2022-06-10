@@ -311,12 +311,24 @@
         "timestamp": 1654758952193,
         "comments": [
             {
-                "id": "rbcez81t3kl46ostrj",
+                "id": "rbcez83tyl481ev9q",
                 "name": "anonymous",
-                "comment": "test3",
+                "comment": "testing",
                 "likes": 0,
-                "timestamp": 1654759028142
+                "timestamp": 1654840678093
             }
         ]
+    },
+    {
+        "id": "rbcez83d4l4817a2i",
+        "title": "new test video",
+        "channel": "default channel",
+        "image": "./public/images/upload-video-preview.jpg",
+        "views": 0,
+        "likes": 0,
+        "duration": "4:01",
+        "video": "https://project-2-api.herokuapp.com/stream",
+        "timestamp": 1654840324025,
+        "comments": []
     }
 ]
