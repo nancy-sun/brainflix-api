@@ -201,6 +201,7 @@
                 "timestamp": 1631088092000
             },
             {
+                "id": "85e3621c-493a-41e0-b0f8-2734d102c7d9",
                 "name": "Dylan Walter",
                 "comment": "Boutique is right! All of these places look magnificent. From the hotel steps to the boardwalk, now that’s a commute I could get used to.",
                 "likes": 0,
@@ -300,35 +301,16 @@
         ]
     },
     {
-        "id": "rbcez81t09l46or75u",
-        "title": "test video",
+        "id": "rbcez85sel483usu2",
+        "title": "testing my api",
+        "description": "test",
         "channel": "default channel",
         "image": "./public/images/upload-video-preview.jpg",
         "views": 0,
         "likes": 0,
         "duration": "4:01",
         "video": "https://project-2-api.herokuapp.com/stream",
-        "timestamp": 1654758952193,
-        "comments": [
-            {
-                "id": "rbcez83tyl481ev9q",
-                "name": "anonymous",
-                "comment": "testing",
-                "likes": 0,
-                "timestamp": 1654840678093
-            }
-        ]
-    },
-    {
-        "id": "rbcez83d4l4817a2i",
-        "title": "new test video",
-        "channel": "default channel",
-        "image": "./public/images/upload-video-preview.jpg",
-        "views": 0,
-        "likes": 0,
-        "duration": "4:01",
-        "video": "https://project-2-api.herokuapp.com/stream",
-        "timestamp": 1654840324025,
+        "timestamp": 1654844780665,
         "comments": []
     }
 ]
