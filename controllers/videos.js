@@ -20,12 +20,11 @@ function getVideoList(req, res) {
 
 
 function postNewVideo(req, res) {
-    const { title, description } = req.body;
+    const { title, description, image } = req.body;
     writeFile(VIDEO_PATH, {
         id: uniqid(),
-        title, description,
+        title, description, image,
         channel: "default channel",
-        image: "./public/images/upload-video-preview.jpg",
         views: 0, //(optional)views+1 every time goes to the video url
         likes: 0,
         duration: "4:01",
@@ -90,4 +89,18 @@ function deleteComment(req, res) {
     })
 }
 
-module.exports = { getVideoList, postNewVideo, getSingleVideo, postComment, deleteComment };
+function likeVideo(req, res) {
+    readFile(VIDEO_PATH, (data) => {
+        const videoDetails = JSON.parse(data);
+        const vidFound = videoDetails.find((video) => video.id == req.params.id);
+        if (vidFound) {
+            vidFound.likes += 1;
+            fs.writeFile(VIDEO_PATH, JSON.stringify(videoDetails), (err) => { err ? console.log(err) : console.log("file written") });
+            res.json(vidFound);
+        } else {
+            res.status(404).send("video not found");
+        }
+    })
+}
+
+module.exports = { getVideoList, postNewVideo, getSingleVideo, postComment, deleteComment, likeVideo };

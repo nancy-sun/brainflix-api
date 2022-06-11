@@ -301,16 +301,31 @@
         ]
     },
     {
-        "id": "rbcez85sel483usu2",
-        "title": "testing my api",
-        "description": "test",
+        "id": "rbcez8n23l494d89b",
+        "title": "123",
+        "description": "123",
+        "image": "/static/media/upload-video-preview.313a407cf90c0668da07.jpg",
         "channel": "default channel",
-        "image": "./public/images/upload-video-preview.jpg",
         "views": 0,
-        "likes": 0,
+        "likes": 6,
         "duration": "4:01",
         "video": "https://project-2-api.herokuapp.com/stream",
-        "timestamp": 1654844780665,
-        "comments": []
+        "timestamp": 1654906106638,
+        "comments": [
+            {
+                "id": "rbcez8pr0l49ju32x",
+                "name": "anonymous",
+                "comment": "testing2",
+                "likes": 0,
+                "timestamp": 1654932087320
+            },
+            {
+                "id": "rbcez8ps0l49ju968",
+                "name": "anonymous",
+                "comment": "testing3",
+                "likes": 0,
+                "timestamp": 1654932095215
+            }
+        ]
     }
 ]
