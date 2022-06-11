@@ -20,8 +20,10 @@ Endpoints include: GET full video list, GET single video by id, POST new video t
 ## API Documentation ##
 
 ### Overview ###
-local host port: 8080
-local host API url: http://localhost:8080
+local host port: 8080 
+
+local host API url: http://localhost:8080 
+
 No authentication required for local host api usage
 
 ### Routes ###
