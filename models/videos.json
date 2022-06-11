@@ -299,33 +299,5 @@
                 "timestamp": 1632496261000
             }
         ]
-    },
-    {
-        "id": "rbcez8n23l494d89b",
-        "title": "123",
-        "description": "123",
-        "image": "/static/media/upload-video-preview.313a407cf90c0668da07.jpg",
-        "channel": "default channel",
-        "views": 0,
-        "likes": 6,
-        "duration": "4:01",
-        "video": "https://project-2-api.herokuapp.com/stream",
-        "timestamp": 1654906106638,
-        "comments": [
-            {
-                "id": "rbcez8pr0l49ju32x",
-                "name": "anonymous",
-                "comment": "testing2",
-                "likes": 0,
-                "timestamp": 1654932087320
-            },
-            {
-                "id": "rbcez8ps0l49ju968",
-                "name": "anonymous",
-                "comment": "testing3",
-                "likes": 0,
-                "timestamp": 1654932095215
-            }
-        ]
     }
 ]
