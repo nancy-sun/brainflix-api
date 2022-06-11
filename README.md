@@ -7,7 +7,8 @@ This is the backend API for the BrainFlix website.
 
 ## Method ##
 
-Node.js, json
+Node.js, json, MVC design pattern
+packages used: express, cors, dotenv
 
 
 ## Features ##
@@ -30,7 +31,7 @@ No authentication required for local host api usage
 Returns an array of video objects with brief info of videos. 
 Contains video id, title, channel, and poster image for each video.
 
-** Response Body Example **
+**Response Body Example**  
 ```
    [
       {
@@ -52,7 +53,7 @@ Contains video id, title, channel, and poster image for each video.
 Returns an objects with detailed info about a single video. 
 Contains video id, title, channel, and poster image, description, views, likes, duration of video, video url, video posting timestamp, comments array of comment objects.
 
-** Response Body Example **
+**Response Body Example**  
 ```
     {
         "id": "84e96018-4022-434e-80bf-000ce4cd12b8",
@@ -96,7 +97,7 @@ Post a new video to the api.
 Post body requires a video title and video description. 
 Response body contains an object with title and description of the video.
 
-** Post Body and Response Body Example **
+**Post Body and Response Body Example**
 ```
     {
         "title": "new test video",
@@ -109,14 +110,14 @@ Post comment to a video by video id.
 Post body requires an object with comment.
 Response body contains an object with comment id, name(anonymous default), comment content, likes(0 default), timestamp of comment posting time.
 
-** Post Body Example **
+**Post Body Example**  
 ```
     {
     "comment": "testing"
     }
 ```
 
-** Response Body Example **
+**Response Body Example**  
 ```
     {
         "id": "rbcez8spil4a9p5zw",
@@ -131,7 +132,7 @@ Response body contains an object with comment id, name(anonymous default), comme
 Delete a comment of a video by video id and comment id.
 Response body contains updated video object after deleting comment.
 
-** Response Body Example **
+**Response Body Example**  
 ```
     {
         "id": "84e96018-4022-434e-80bf-000ce4cd12b8",
@@ -167,7 +168,7 @@ Response body contains updated video object after deleting comment.
 Add a like to a video by video id.
 Response body contains updated video object with new like counts
 
-** Response Body Example **
+**Response Body Example**  
 ```
     {
         "id": "84e96018-4022-434e-80bf-000ce4cd12b8",
