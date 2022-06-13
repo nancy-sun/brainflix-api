@@ -7,7 +7,7 @@ This is the backend API for the BrainFlix website.
 
 ## Method ##
 
-Node.js, json, MVC design pattern
+Node.js, json, MVC design pattern  
 packages used: express, cors, dotenv
 
 
